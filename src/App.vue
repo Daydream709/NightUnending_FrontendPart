@@ -21,15 +21,19 @@ const components = {
     </div>
     <div class="tab-bar">
       <div class="tab-item" :class="{ active: activeTab === 'home' }" @click="activeTab = 'home'">
+        <img class="tab-icon" src="../source/icon/home.png" alt="">
         <span>首页</span>
       </div>
       <div class="tab-item" :class="{ active: activeTab === 'plant' }" @click="activeTab = 'plant'">
+        <img class="tab-icon" src="../source/icon/plant.png" alt=""></img>
         <span>种植</span>
       </div>
       <div class="tab-item" :class="{ active: activeTab === 'friends' }" @click="activeTab = 'friends'">
+        <img class="tab-icon" src="../source/icon/friends.png" alt=""></img>
         <span>好友</span>
       </div>
       <div class="tab-item" :class="{ active: activeTab === 'profile' }" @click="activeTab = 'profile'">
+        <img class="tab-icon" src="../source/icon/profile.png" alt=""></img>
         <span>我的</span>
       </div>
     </div>
@@ -41,13 +45,14 @@ const components = {
   height: 100vh;
   display: flex;
   flex-direction: column;
-  padding-bottom: 60px;
   box-sizing: border-box;
 }
 
 .content {
   flex: 1;
-  overflow-y: auto;
+  overflow: hidden;
+  height: 89vh;
+  padding-bottom: 11vh;
 }
 
 .tab-bar {
@@ -55,11 +60,10 @@ const components = {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 60px;
+  height: 11vh;
   display: flex;
-  background-color: #fff;
+  background-color: #EBEBEB;
   border-top: 1px solid #eee;
-  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .tab-item {
@@ -68,13 +72,20 @@ const components = {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 14px;
-  color: #666;
+  font-size: 12px;
+  font-weight: 400;
+  color: #AAAAAA;
   cursor: pointer;
+  opacity: 0.4;
+}
+
+.tab-icon {
+  width: 12vw;
 }
 
 .tab-item.active {
-  color: #42b983;
+  color: #000000;
   font-weight: bold;
+  opacity: 1;
 }
 </style>
