@@ -21,19 +21,19 @@ const components = {
     </div>
     <div class="tab-bar">
       <div class="tab-item" :class="{ active: activeTab === 'home' }" @click="activeTab = 'home'">
-        <img class="tab-icon" src="../source/icon/home.png" alt="">
+        <img class="tab-icon" src="../public/source/icon/home.png" alt="">
         <span>首页</span>
       </div>
       <div class="tab-item" :class="{ active: activeTab === 'plant' }" @click="activeTab = 'plant'">
-        <img class="tab-icon" src="../source/icon/plant.png" alt=""></img>
+        <img class="tab-icon" src="../public/source/icon/plant.png" alt=""></img>
         <span>种植</span>
       </div>
       <div class="tab-item" :class="{ active: activeTab === 'friends' }" @click="activeTab = 'friends'">
-        <img class="tab-icon" src="../source/icon/friends.png" alt=""></img>
+        <img class="tab-icon" src="../public/source/icon/friends.png" alt=""></img>
         <span>好友</span>
       </div>
       <div class="tab-item" :class="{ active: activeTab === 'profile' }" @click="activeTab = 'profile'">
-        <img class="tab-icon" src="../source/icon/profile.png" alt=""></img>
+        <img class="tab-icon" src="../public/source/icon/profile.png" alt=""></img>
         <span>我的</span>
       </div>
     </div>
