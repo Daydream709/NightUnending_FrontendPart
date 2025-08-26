@@ -1,29 +1,13 @@
-# frontend
+# 概述
 
-This template should help get you started developing with Vue 3 in Vite.
+这是夜未央项目的前端部分代码
+采用了 vue3 框架
 
-## Recommended IDE Setup
+# 内容
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+- 主页
+- 种植
+- 好友
+- 我的
 
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
+是一个有着四个页面的单页面项目（spa）
