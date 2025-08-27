@@ -6,7 +6,7 @@
                 <div class="slide-content" :style="{
                     backgroundColor: transparent,
                 }">
-                    <img class="shichenimg" :src="`../../public/shichen/${slide.imgname}`" alt="">
+                    <img class="shichenimg" :src="`./source/shichen/${slide.imgname}`" alt="">
                 </div>
             </swiper-slide>
         </swiper>

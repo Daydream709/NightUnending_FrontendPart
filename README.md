@@ -11,3 +11,10 @@
 - 我的
 
 是一个有着四个页面的单页面项目（spa）
+
+## 注意事项
+
+貌似由于一些不明的语法问题，可能是反引号还是什么动态绑定之类的问题，轮播图的图片地址格式应按照如下格式
+
+```html
+<img class="shichenimg" :src="`./source/shichen/${slide.imgname}`" alt="">
