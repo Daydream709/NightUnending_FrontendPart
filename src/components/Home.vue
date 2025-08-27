@@ -22,12 +22,25 @@
                 </div>
             </div>
 
-            <div class="p2"></div>
+            <div class="p2">
+                <div class="todolist">
+                    <div class="todolisttitle">任务列表</div>
+                    <ol class="todolistcontent">
+                        <li>test1</li>
+                        <li>test2</li>
+                    </ol>
+                </div>
+                <div class="aiadvice"></div>
+            </div>
+        </div>
+        <div class="card">
+            <SwiperCarousel />
         </div>
     </div>
 </template>
 
 <script setup>
+import SwiperCarousel from './SwiperCarousel.vue';
 </script>
 
 <style scoped>
@@ -85,7 +98,6 @@
 .middle {
     background-color: yellow;
     height: 17.61vh;
-    padding-left: 4.27vw;
 }
 
 .p1 {
@@ -93,6 +105,8 @@
     width: 42.67vw;
     height: 17.61vh;
     border-radius: 5.4vw;
+    display: inline-block;
+    margin-right: 3vw;
 }
 
 .p1text {
@@ -138,6 +152,56 @@
     float: right;
     padding-top: 1.3vw;
     padding-right: 1vw;
+}
+
+.p2 {
+    background-color: plum;
+    width: 42.67vw;
+    height: 17.61vh;
+    display: inline-block;
+    margin-left: 3vw;
+}
+
+.todolist {
+    background-color: #EBFFEC;
+    border-radius: 5.4vw;
+    width: 100%;
+    height: 10.59vh;
+    margin-bottom: 1.1vh;
+    float: left;
+
+}
+
+.aiadvice {
+    background-color: #EBFFEC;
+    border-radius: 5.4vw;
+    width: 100%;
+    height: 5.92vh;
+    float: left;
+}
+
+.todolisttitle {
+    font-size: 1.4vh;
+    text-align: left;
+    margin-top: 3.8vw;
+    margin-left: 3vw;
+    color: #000000;
+}
+
+.todolistcontent {
+    padding-left: 6vw;
+    line-height: 2.5;
+}
+
+.todolistcontent>li {
+    font-size: 1.25vh;
+    color: #000000;
+    text-align: left;
+}
+
+.card {
+    height: 44vh;
+    background-color: chocolate;
 }
 
 h1 {
