@@ -57,7 +57,7 @@ import SwiperCarousel from './SwiperCarousel.vue';
 
 .top {
     height: 15vh;
-    background-color: pink;
+    /* background-color: pink; */
 }
 
 .title {
@@ -81,7 +81,7 @@ import SwiperCarousel from './SwiperCarousel.vue';
 
 .morning {
     padding-left: 6.4vw;
-    background-color: skyblue;
+    /* background-color: skyblue; */
     padding-bottom: 1.5vh;
 }
 
@@ -96,7 +96,7 @@ import SwiperCarousel from './SwiperCarousel.vue';
 }
 
 .middle {
-    background-color: yellow;
+    /* background-color: yellow; */
     height: 17.61vh;
 }
 
@@ -155,7 +155,7 @@ import SwiperCarousel from './SwiperCarousel.vue';
 }
 
 .p2 {
-    background-color: plum;
+    /* background-color: plum; */
     width: 42.67vw;
     height: 17.61vh;
     display: inline-block;
@@ -201,7 +201,7 @@ import SwiperCarousel from './SwiperCarousel.vue';
 
 .card {
     height: 44vh;
-    background-color: chocolate;
+    /* background-color: chocolate; */
 }
 
 h1 {

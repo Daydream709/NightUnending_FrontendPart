@@ -72,7 +72,7 @@ const components = {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 12px;
+  font-size: 3.2vw;
   font-weight: 400;
   color: #AAAAAA;
   cursor: pointer;

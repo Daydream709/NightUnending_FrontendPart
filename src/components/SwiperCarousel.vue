@@ -1,13 +1,12 @@
 <template>
     <div class="swiper-container">
-        <swiper class="myswiper" :modules="modules" :slides-per-view="1.6" :space-between="10" :loop="true"
+        <swiper class="myswiper" :modules="modules" :slides-per-view="1.5" :space-between="10" :loop="false"
             :centered-slides="true" @swiper="onSwiper" @slideChange="onSlideChange">
             <swiper-slide v-for="(slide, index) in slides" :key="index">
                 <div class="slide-content" :style="{
-                    backgroundColor: slide.color
+                    backgroundColor: transparent,
                 }">
-                    <h3>{{ slide.title }}</h3>
-                    <p>{{ slide.description }}</p>
+                    <img class="shichenimg" :src="`../../public/shichen/${slide.imgname}`" alt="">
                 </div>
             </swiper-slide>
         </swiper>
@@ -28,35 +27,17 @@ const modules = ref([Autoplay]);
 
 const slides = ref([
     {
-        title: 'Slide 1',
-        description: '这是第一个轮播图',
-        color: '#FF6B6B'
+        imgname: 'zishi.png',
     },
     {
-        title: 'Slide 2',
-        description: '这是第二个轮播图',
-        color: '#4ECDC4'
+        imgname: 'choushi.png',
     },
     {
-        title: 'Slide 3',
-        description: '这是第三个轮播图',
-        color: '#45B7D1'
+        imgname: 'yinshi.png',
     },
     {
-        title: 'Slide 4',
-        description: '这是第四个轮播图',
-        color: '#96CEB4'
+        imgname: 'maoshi.png',
     },
-    {
-        title: 'Slide 5',
-        description: '这是第五个轮播图',
-        color: '#FFE66D'
-    },
-    {
-        title: 'Slide 6',
-        description: '这是第六个轮播图',
-        color: '#FF9F1C'
-    }
 ]);
 
 const onSwiper = (swiper) => {
@@ -118,8 +99,8 @@ const onSlideChange = () => {
 .swiper-container {
     width: 100%;
     height: 100%;
-    padding-top: 6vh;
-    overflow: hidden;
+    padding-top: 3.5vh;
+    overflow: visible !important;
 }
 
 .slide-content {
@@ -127,20 +108,18 @@ const onSlideChange = () => {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 33vh;
-    border-radius: 15px;
+    height: 37vh;
+    border-radius: 4vw;
     color: white;
     transition: all 0.3s ease;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    /* box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3); */
     position: relative;
+    overflow: hidden;
 }
 
-.slide-content h3 {
-    font-size: 24px;
-    margin-bottom: 10px;
-}
-
-.slide-content p {
-    font-size: 16px;
+.shichenimg {
+    width: auto;
+    height: 100%;
+    border-radius: 4vw;
 }
 </style>
