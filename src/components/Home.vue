@@ -13,9 +13,9 @@
                 <div class="p1text">
                     <div class="p1text1">您昨晚的入睡时间</div>
                     <div class="p1text2">北京时间</div>
-                    <div class="timefallsleep">00 : 00</div>
+                    <div class="timefallsleep">{{ sleepData.sleepTime }}</div>
                     <div class="p1text3">睡眠时长</div>
-                    <div class="sleeptime">0h0min</div>
+                    <div class="sleeptime">{{ sleepData.duration }}</div>
                 </div>
                 <div class="p1icon">
                     <img class="more" src="../../public/source/icon/more.png" alt="">
@@ -40,8 +40,116 @@
 </template>
 
 <script setup>
-import SwiperCarousel from './SwiperCarousel.vue';
+import SwiperCarousel from './SwiperCarousel.vue'
+import { ref, onMounted } from 'vue'
+
+// 定义响应式数据
+const sleepData = ref({
+    sleepTime: '00 : 00',
+    wakeTime: '00 : 00',
+    duration: '0h0min',
+    score: 0,
+    advice: '暂无建议'
+})
+
+const hasPermission = ref(false)
+// 定义更新睡眠数据的方法，供Android调用
+window.updateLatestSleepData = function (jsonData) {
+    try {
+        // 先尝试解析传入的数据，如果不成功再当作字符串处理
+        let data;
+        if (typeof jsonData === 'string') {
+            data = JSON.parse(jsonData)
+        } else {
+            data = jsonData
+        }
+
+        sleepData.value = {
+            sleepTime: data.sleepTime || data.fallAsleepTime || '--:--',
+            wakeTime: data.wakeTime || '--:--',
+            duration: data.duration || data.durationFormatted || '暂无数据',
+            score: data.score !== undefined && data.score !== null ? parseFloat(data.score) : 0,
+            advice: data.advice || '暂无建议'
+        }
+        console.log('更新睡眠数据:', sleepData.value)
+    } catch (error) {
+        console.error('解析睡眠数据失败:', error)
+        // 如果解析失败，尝试作为原始字符串处理
+        try {
+            const cleanJson = jsonData.replace(/\\/g, '')
+            const data = JSON.parse(cleanJson)
+            sleepData.value = {
+                sleepTime: data.sleepTime || data.fallAsleepTime || '--:--',
+                wakeTime: data.wakeTime || '--:--',
+                duration: data.duration || data.durationFormatted || '暂无数据',
+                score: data.score !== undefined && data.score !== null ? parseFloat(data.score) : 0,
+                advice: data.advice || '暂无建议'
+            }
+        } catch (secondError) {
+            console.error('二次解析也失败:', secondError)
+        }
+    }
+}
+
+// 获取睡眠历史数据
+const loadSleepHistory = () => {
+    try {
+        if (typeof Android !== 'undefined' && Android.getSleepHistory) {
+            const historyJson = Android.getSleepHistory()
+            const history = JSON.parse(historyJson)
+            console.log('睡眠历史数据:', history)
+            // 可以在这里处理历史数据
+        }
+    } catch (error) {
+        console.error('获取睡眠历史数据失败:', error)
+    }
+}
+// 请求最新数据
+const requestData = () => {
+    if (typeof Android !== 'undefined' && Android.requestLatestSleepDataFromJs) {
+        Android.requestLatestSleepDataFromJs()
+    } else {
+        // 模拟测试数据
+        window.updateLatestSleepData({
+            sleepTime: "01:30",
+            wakeTime: "08:30",
+            duration: "7小时0分钟",
+            score: 85.50,
+            advice: "睡眠质量很好，继续保持！"
+        })
+    }
+}
+// 请求权限
+const requestPermission = () => {
+    if (typeof Android !== 'undefined' && Android.requestPermissionFromJs) {
+        Android.requestPermissionFromJs()
+    }
+}
+
+// 检查权限
+const checkPermission = () => {
+    if (typeof Android !== 'undefined' && Android.hasUsageStatsPermissionFromJs) {
+        hasPermission.value = Android.hasUsageStatsPermissionFromJs()
+    }
+}
+// 组件挂载时加载数据
+onMounted(() => {
+    checkPermission()
+    loadSleepHistory()
+
+    // 检查是否在Android WebView环境中
+    if (typeof Android !== 'undefined' && Android.requestLatestSleepDataFromJs) {
+        // 请求最新的睡眠数据
+        Android.requestLatestSleepDataFromJs()
+    } else {
+        // 如果不在Android环境中，使用模拟数据
+        setTimeout(() => {
+            requestData()
+        }, 1000)
+    }
+})
 </script>
+
 
 <style scoped>
 .body {
