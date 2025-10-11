@@ -65,12 +65,17 @@ window.updateLatestSleepData = function (jsonData) {
         }
 
         sleepData.value = {
-            sleepTime: data.sleepTime || data.fallAsleepTime || '--:--',
+            sleepTime: data.sleepTime || '--:--',
             wakeTime: data.wakeTime || '--:--',
             duration: data.duration || data.durationFormatted || '暂无数据',
             score: data.score !== undefined && data.score !== null ? parseFloat(data.score) : 0,
             advice: data.advice || '暂无建议'
         }
+        console.log('sleepTime数据:', data.sleepTime, typeof data.sleepTime)
+        console.log('wakeTime数据:', data.wakeTime, typeof data.wakeTime)
+        console.log('duration数据:', data.duration, typeof data.duration)
+        console.log('score数据:', data.score)
+        console.log('advice数据:', data.advice)
         console.log('更新睡眠数据:', sleepData.value)
     } catch (error) {
         console.error('解析睡眠数据失败:', error)
@@ -110,21 +115,17 @@ const requestData = () => {
         Android.requestLatestSleepDataFromJs()
     } else {
         // 模拟测试数据
-        window.updateLatestSleepData({
-            sleepTime: "01:30",
-            wakeTime: "08:30",
-            duration: "7小时0分钟",
-            score: 85.50,
-            advice: "睡眠质量很好，继续保持！"
-        })
-    }
+    //     console.log('模拟测试数据ababababab:')
+    //     window.updateLatestSleepData({
+    //         sleepTime: "01:40",
+    //         wakeTime: "08:30",
+    //         duration: "7小时0分钟",
+    //         score: 85.50,
+    //         advice: "睡眠质量很好，继续保持！"
+    //     })
+    // }
 }
-// 请求权限
-const requestPermission = () => {
-    if (typeof Android !== 'undefined' && Android.requestPermissionFromJs) {
-        Android.requestPermissionFromJs()
-    }
-}
+
 
 // 检查权限
 const checkPermission = () => {
@@ -132,6 +133,7 @@ const checkPermission = () => {
         hasPermission.value = Android.hasUsageStatsPermissionFromJs()
     }
 }
+
 // 组件挂载时加载数据
 onMounted(() => {
     checkPermission()
@@ -140,7 +142,9 @@ onMounted(() => {
     // 检查是否在Android WebView环境中
     if (typeof Android !== 'undefined' && Android.requestLatestSleepDataFromJs) {
         // 请求最新的睡眠数据
-        Android.requestLatestSleepDataFromJs()
+        const result = Android.requestLatestSleepDataFromJs()
+        console.log('获取到的睡眠数据:', result)
+
     } else {
         // 如果不在Android环境中，使用模拟数据
         setTimeout(() => {
