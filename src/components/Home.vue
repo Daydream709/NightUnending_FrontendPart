@@ -41,7 +41,7 @@
 
 <script setup>
 import SwiperCarousel from './SwiperCarousel.vue'
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, onActivated } from 'vue'
 
 // 定义响应式数据
 const sleepData = ref({
@@ -111,19 +111,12 @@ const loadSleepHistory = () => {
 }
 // 请求最新数据
 const requestData = () => {
+    console.log('执行requestData函数')
+    // 检查是否在Android WebView环境中
     if (typeof Android !== 'undefined' && Android.requestLatestSleepDataFromJs) {
+        console.log('调用Android.requestLatestSleepDataFromJs')
         Android.requestLatestSleepDataFromJs()
-    } else {
-        // 模拟测试数据
-    //     console.log('模拟测试数据ababababab:')
-    //     window.updateLatestSleepData({
-    //         sleepTime: "01:40",
-    //         wakeTime: "08:30",
-    //         duration: "7小时0分钟",
-    //         score: 85.50,
-    //         advice: "睡眠质量很好，继续保持！"
-    //     })
-    // }
+    }
 }
 
 
@@ -134,26 +127,28 @@ const checkPermission = () => {
     }
 }
 
-// 组件挂载时加载数据
-onMounted(() => {
+// 创建一个统一的加载函数，可以在多个地方调用
+const loadData = () => {
+    console.log('开始加载数据...')
     checkPermission()
     loadSleepHistory()
 
-    // 检查是否在Android WebView环境中
-    if (typeof Android !== 'undefined' && Android.requestLatestSleepDataFromJs) {
-        // 请求最新的睡眠数据
-        const result = Android.requestLatestSleepDataFromJs()
-        console.log('获取到的睡眠数据:', result)
+    // 直接调用requestData来获取最新数据
+    requestData()
+}
 
-    } else {
-        // 如果不在Android环境中，使用模拟数据
-        setTimeout(() => {
-            requestData()
-        }, 1000)
-    }
+// 组件挂载时加载数据
+onMounted(() => {
+    console.log('组件已挂载，开始加载数据')
+    loadData()
+})
+
+// 组件被激活时也加载数据（适用于动态组件切换）
+onActivated(() => {
+    console.log('组件被激活，重新加载数据')
+    loadData()
 })
 </script>
-
 
 <style scoped>
 .body {

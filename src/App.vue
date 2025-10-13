@@ -17,7 +17,9 @@ const components = {
 <template>
   <div class="app-container">
     <div class="content">
-      <component :is="components[activeTab]"></component>
+      <keep-alive>
+        <component :is="components[activeTab]"></component>
+      </keep-alive>
     </div>
     <div class="tab-bar">
       <div class="tab-item" :class="{ active: activeTab === 'home' }" @click="activeTab = 'home'">
