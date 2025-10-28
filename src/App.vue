@@ -64,8 +64,7 @@ const components = {
   right: 0;
   height: 11vh;
   display: flex;
-  background-color: #EBEBEB;
-  border-top: 1px solid #eee;
+  background-color: #D1DBC7;
 }
 
 .tab-item {

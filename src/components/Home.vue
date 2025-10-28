@@ -160,6 +160,7 @@ onActivated(() => {
     padding: 0;
     text-align: center;
     line-height: 1.3;
+
 }
 
 .top {
@@ -208,7 +209,7 @@ onActivated(() => {
 }
 
 .p1 {
-    background-color: #EBFFEC;
+    background-color: #D1DBC7;
     width: 42.67vw;
     height: 17.61vh;
     border-radius: 5.4vw;
@@ -270,7 +271,7 @@ onActivated(() => {
 }
 
 .todolist {
-    background-color: #EBFFEC;
+    background-color: #D1DBC7;
     border-radius: 5.4vw;
     width: 100%;
     height: 10.59vh;
@@ -280,7 +281,7 @@ onActivated(() => {
 }
 
 .aiadvice {
-    background-color: #EBFFEC;
+    background-color: #D1DBC7;
     border-radius: 5.4vw;
     width: 100%;
     height: 5.92vh;
