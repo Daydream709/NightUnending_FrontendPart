@@ -17,4 +17,7 @@
 貌似由于一些不明的语法问题，可能是反引号还是什么动态绑定之类的问题，轮播图的图片地址格式应按照如下格式
 
 ```html
-<img class="shichenimg" :src="`./source/shichen/${slide.imgname}`" alt="">
+<img class="shichenimg" :src="`./source/shichen/${slide.imgname}`" alt="" />
+```
+
+- 2025.10.29 目前提交的版本有一个 bug，好友界面的滑动部分整你用下部分滑动，不能用上部分
