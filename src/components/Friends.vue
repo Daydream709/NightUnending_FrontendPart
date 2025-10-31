@@ -32,7 +32,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted, onActivated } from 'vue'
 
 const scrollContainer = ref(null)
 const topOpacity = ref(1)
@@ -62,6 +62,10 @@ onUnmounted(() => {
     if (scrollContainer.value) {
         scrollContainer.value.removeEventListener('scroll', handleScroll)
     }
+})
+
+onActivated(() => {
+    topOpacity.value = 1
 })
 </script>
 

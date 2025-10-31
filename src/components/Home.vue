@@ -2,11 +2,10 @@
     <div class="page">
         <div class="top">
             <span class="title">夜未央</span>
-            <div class="avatar"></div>
         </div>
         <div class="morning">
+            <span class="nowtime">现在是{{ time }}</span>
             <span class="gmornig">早上好</span>
-            <span class="username">XXX</span>
         </div>
         <div class="middle">
             <div class="p1">
@@ -23,12 +22,8 @@
             </div>
 
             <div class="p2">
-                <div class="todolist">
-                    <div class="todolisttitle">任务列表</div>
-                    <ol class="todolistcontent">
-                        <li>test1</li>
-                        <li>test2</li>
-                    </ol>
+                <div class="usernamediv">
+                    <span class="username">{{ username }}</span>
                 </div>
                 <div class="aiadvice"></div>
             </div>
@@ -41,7 +36,7 @@
 
 <script setup>
 import SwiperCarousel from './SwiperCarousel.vue'
-import { ref, onMounted, onActivated } from 'vue'
+import { ref, onMounted, onUnmounted, onActivated } from 'vue'
 
 // 定义响应式数据
 const sleepData = ref({
@@ -51,6 +46,21 @@ const sleepData = ref({
     score: 0,
     advice: '暂无建议'
 })
+
+const username = ref('XXX')
+// 定义时间响应式变量
+const time = ref('')
+
+// 更新时间的函数
+const updateTime = () => {
+    time.value = new Date().toLocaleTimeString('zh-CN', {
+        hour: '2-digit',
+        minute: '2-digit'
+    })
+}
+// 组件挂载时开始定时更新时间
+let timer = null
+
 
 const hasPermission = ref(false)
 // 定义更新睡眠数据的方法，供Android调用
@@ -141,12 +151,24 @@ const loadData = () => {
 onMounted(() => {
     console.log('组件已挂载，开始加载数据')
     loadData()
-})
+    // 立即更新一次时间
+    updateTime()
 
+    // 每半分钟更新一次时间
+    timer = setInterval(updateTime, 30000)
+})
+// 组件卸载时清除定时器
+onUnmounted(() => {
+    if (timer) {
+        clearInterval(timer)
+    }
+})
 // 组件被激活时也加载数据（适用于动态组件切换）
 onActivated(() => {
     console.log('组件被激活，重新加载数据')
     loadData()
+    // 立即更新一次时间
+    updateTime()
 })
 </script>
 
@@ -169,36 +191,27 @@ onActivated(() => {
 }
 
 .title {
-    font-size: 1.72vh;
-    color: #000000;
+    font-size: 6.4vw;
+    color: #12372A;
     float: left;
     padding-top: 8.62vh;
     padding-left: 7.2vw;
     font-weight: 400;
 }
 
-.avatar {
-    width: 12.53vw;
-    height: 12.53vw;
-    border-radius: 6.265vw;
-    background-color: #D9D9D9;
-    float: right;
-    margin-top: 6.77vh;
-    margin-right: 10.4vw;
-}
 
 .morning {
-    padding-left: 6.4vw;
+    padding-right: 6.4vw;
     /* background-color: skyblue; */
-    padding-bottom: 1.5vh;
+    font-size: 8.534vw;
+    text-align: right;
+    color: #12372A;
+
 }
 
-.gmornig,
-.username {
-    font-size: 8.534vw;
+.nowtime,
+.gmornig {
     display: block;
-    text-align: left;
-    color: #000000;
     padding: 0;
     margin: 0;
 }
@@ -222,31 +235,36 @@ onActivated(() => {
     float: left;
     /* background-color: slateblue; */
     padding-left: 4vw;
-    padding-top: 4vw;
+    padding-top: 1.847vh;
+    line-height: 1.4;
 }
 
-.p1text1,
-.p1text3 {
-    font-size: 1.4vh;
-    color: #000000;
+.p1text1 {
     text-align: left;
+    color: #12372A;
+    font-size: 1.478vh;
 }
 
 .p1text2 {
-    font-size: 1.1vh;
-    color: #454545;
+    font-size: 1.385vh;
+    color: #436850;
+    text-align: left;
+}
+
+.p1text3 {
+    font-size: 1.385vh;
+    color: #436850;
     text-align: left;
 }
 
 .timefallsleep {
-    color: #008B12;
-    font-size: 3.5vh;
+    color: #436850;
+    font-size: 2.955vh;
     text-align: left;
-    margin-bottom: 2.5vw;
 }
 
 .sleeptime {
-    color: #008B12;
+    color: #436850;
     font-size: 3.5vh;
     text-align: left;
     line-height: 1.1;
@@ -270,21 +288,28 @@ onActivated(() => {
     margin-left: 3vw;
 }
 
-.todolist {
-    background-color: #D1DBC7;
-    border-radius: 5.4vw;
+.usernamediv {
+    /* background-color: #D1DBC7; */
     width: 100%;
-    height: 10.59vh;
-    margin-bottom: 1.1vh;
+    height: 4.69vh;
+    margin-bottom: 1vh;
     float: left;
+    text-align: right;
+    padding-right: 2.5vw;
 
+
+}
+
+.username {
+    font-size: 8vw;
+    color: #12372A
 }
 
 .aiadvice {
     background-color: #D1DBC7;
     border-radius: 5.4vw;
     width: 100%;
-    height: 5.92vh;
+    height: 11.92vh;
     float: left;
 }
 

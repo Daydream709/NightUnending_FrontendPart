@@ -48,6 +48,7 @@ const components = {
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
+  background-color: #FFF6E9;
 }
 
 .content {
@@ -89,4 +90,19 @@ const components = {
   font-weight: bold;
   opacity: 1;
 }
+</style>
+
+<style>
+/* 全局样式 */
+html,
+body {
+  overscroll-behavior: none;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* 或者只在应用容器上
+.app-container {
+  overscroll-behavior: none;
+} */
 </style>

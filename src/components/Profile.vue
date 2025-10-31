@@ -88,11 +88,11 @@
 .accomplishment,
 .settings {
     height: 5.54vh;
-    background-color: #EBEBEB;
+    background-color: #D1DBC7;
     text-align: left;
     line-height: 5.54vh;
     font-size: 4vw;
-    color: #454545;
+    color: #436850;
 
 }
 
