@@ -3,8 +3,8 @@
         <div class="topofpage">
             <div class="power">能量</div>
             <div class="storage" @click="openModal">
-                <img class="storage_picture" src="../../public/source/药材库.png" alt="">
-                <div class="storage_words">药材库</div>
+                <img class="storage_picture" src="../../public/source/药草库.png" alt="">
+                <div class="storage_words">药草库</div>
             </div>
         </div>
         <div class="medicine">
@@ -82,7 +82,7 @@ const closeModal = () => {
 
 .storage {
     float: right;
-    margin-top: 3vh;
+    margin-top: 4vh;
     margin-right: 5.6vw;
     font-size: 3.4vw;
 }
