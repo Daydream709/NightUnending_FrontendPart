@@ -195,23 +195,23 @@ const closeModal = () => {
 
 /* 根据柜子图片的实际布局调整位置 */
 .item-1 {
-    top: 23%;
-    left: 27%;
+    top: 23.5%;
+    left: 17%;
 }
 
 .item-2 {
     top: 23%;
-    right: 27%;
+    right: 36%;
 }
 
 .item-3 {
     top: 37%;
-    left: 27%;
+    left: 18%;
 }
 
 .item-4 {
     top: 37%;
-    right: 27%;
+    right: 36%;
 }
 
 .close-button {
@@ -232,7 +232,6 @@ const closeModal = () => {
 .close-button:hover {
     background-color: #45a049;
 }
-
 </style>
 // 812
 // 89vh

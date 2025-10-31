@@ -25,7 +25,14 @@
                 <div class="usernamediv">
                     <span class="username">{{ username }}</span>
                 </div>
-                <div class="aiadvice"></div>
+                <div class="power">
+                    <div class="powercontent">
+                        <div class="powertext">本次睡眠获得能量</div>
+                        <div class="dailyenergy">{{ dailyenergy }}</div>
+                        <div class="cumulativeenergy">累计获得 {{ cumulativeenergy }}</div>
+                    </div>
+
+                </div>
             </div>
         </div>
         <div class="card">
@@ -46,6 +53,9 @@ const sleepData = ref({
     score: 0,
     advice: '暂无建议'
 })
+const dailyenergy = ref(666)
+
+const cumulativeenergy = ref(114514)
 
 const username = ref('XXX')
 // 定义时间响应式变量
@@ -305,7 +315,7 @@ onActivated(() => {
     color: #12372A
 }
 
-.aiadvice {
+.power {
     background-color: #D1DBC7;
     border-radius: 5.4vw;
     width: 100%;
@@ -313,25 +323,29 @@ onActivated(() => {
     float: left;
 }
 
-.todolisttitle {
-    font-size: 1.4vh;
+.powercontent {
+    padding-left: 3.5vw;
+    padding-top: 1.6vh;
     text-align: left;
-    margin-top: 3.8vw;
-    margin-left: 3vw;
-    color: #000000;
+    line-height: 1.35;
 }
 
-.todolistcontent {
-    padding-left: 6vw;
-    line-height: 2.5;
+.powertext {
+
+    color: #12372A;
+    font-size: 1.478vh;
 }
 
-.todolistcontent>li {
-    font-size: 1.25vh;
-    color: #000000;
-    text-align: left;
+.dailyenergy {
+    color: #436850;
+    font-size: 3.94vh;
 }
+.cumulativeenergy
+{
+    color: #AAAAAA;
+    font-size: 1.3vh;
 
+}
 .card {
     height: 44vh;
     /* background-color: chocolate; */
