@@ -102,8 +102,8 @@ onActivated(() => {
     width: 93.33vw;
     background-color: #D1DBC7;
     margin: 0 auto;
-    margin-top: 3vh;
-    margin-bottom: 4vh;
+    margin-top: 2vh;
+    margin-bottom: 3vh;
     border-radius: 3.2vh;
     display: flex;
     overflow: hidden;
@@ -209,6 +209,7 @@ onActivated(() => {
     /* 底部留白 */
     background-color: #D1DBC7;
     border-radius: 10.6vw 10.6vw 0 0;
+    position: relative;
 }
 
 .item {

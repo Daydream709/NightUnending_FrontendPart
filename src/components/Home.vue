@@ -14,7 +14,7 @@
                     <div class="p1text2">北京时间</div>
                     <div class="timefallsleep">{{ sleepData.sleepTime }}</div>
                     <div class="p1text3">睡眠时长</div>
-                    <div class="sleeptime">{{ sleepData.duration }}</div>
+                    <div class="sleeptime">{{ ((sleepData.duration).replace('小', '')).replace('钟', '') }}</div>
                 </div>
                 <div class="p1icon">
                     <img class="more" src="../../public/source/icon/more.png" alt="">
@@ -65,7 +65,8 @@ const time = ref('')
 const updateTime = () => {
     time.value = new Date().toLocaleTimeString('zh-CN', {
         hour: '2-digit',
-        minute: '2-digit'
+        minute: '2-digit',
+        hour12: false
     })
 }
 // 组件挂载时开始定时更新时间
@@ -275,7 +276,7 @@ onActivated(() => {
 
 .sleeptime {
     color: #436850;
-    font-size: 3.5vh;
+    font-size: 2.955vh;
     text-align: left;
     line-height: 1.1;
 }
@@ -340,12 +341,13 @@ onActivated(() => {
     color: #436850;
     font-size: 3.94vh;
 }
-.cumulativeenergy
-{
+
+.cumulativeenergy {
     color: #AAAAAA;
     font-size: 1.3vh;
 
 }
+
 .card {
     height: 44vh;
     /* background-color: chocolate; */

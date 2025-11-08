@@ -66,6 +66,7 @@
     left: 34.1vw;
     text-align: left;
     line-height: 1.4;
+    color: #000;
 }
 
 .name {

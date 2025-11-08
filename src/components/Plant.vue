@@ -8,12 +8,13 @@
             </div>
         </div>
         <div class="medicine">
-            <img src="../../public/source/plants/枸杞.png" alt="" class="medicine_picture">
+            <img :src="`../../public/source/plants/${plantname}.png`" alt="" class="medicine_picture"
+                :class="plantname">
         </div>
         <div class="bottomofpage">
             <img src="../../public/source/告示牌.png" alt="" class="board">
             <div class="board_words">
-                <div class="plant_name">百合</div>
+                <div class="plant_name">{{ plantname }}</div>
                 <div class="plant_period">成熟期</div>
                 <div class="progress-container">
                     <div class="progress-bar">
@@ -29,10 +30,14 @@
                 <img src="../../public/source/柜子.png" class="cabinet-image" alt="柜子">
 
                 <!-- 在图片上定位其他元素 -->
-                <img src="../../public/source/plants/夏枯草种子.png" class="fixed-item item-1" alt="药材1">
-                <img src="../../public/source/plants/枸杞种子.png" class="fixed-item item-2" alt="药材2">
-                <img src="../../public/source/plants/百合种子.png" class="fixed-item item-3" alt="药材3">
-                <img src="../../public/source/plants/酸枣仁种子.png" class="fixed-item item-4" alt="药材4">
+                <img src="../../public/source/plants/夏枯草种子.png" class="fixed-item item-1" alt="夏枯草"
+                    @click="changetoxiakucao">
+                <img src="../../public/source/plants/枸杞种子.png" class="fixed-item item-2" alt="枸杞"
+                    @click="changetogouqi">
+                <img src="../../public/source/plants/百合种子.png" class="fixed-item item-3" alt="百合"
+                    @click="changetobaihe">
+                <img src="../../public/source/plants/酸枣仁种子.png" class="fixed-item item-4" alt="酸枣仁"
+                    @click="changetosuanzaoren">
 
                 <button @click="closeModal" class="close-button">关闭</button>
             </div>
@@ -45,7 +50,7 @@ import { ref } from 'vue'
 
 // 控制模态框显示状态
 const showModal = ref(false)
-
+const plantname = ref('枸杞')
 // 打开模态框的方法
 const openModal = () => {
     showModal.value = true
@@ -54,6 +59,18 @@ const openModal = () => {
 // 关闭模态框的方法
 const closeModal = () => {
     showModal.value = false
+}
+const changetosuanzaoren = () => {
+    plantname.value = '酸枣仁'
+}
+const changetobaihe = () => {
+    plantname.value = '百合'
+}
+const changetogouqi = () => {
+    plantname.value = '枸杞'
+}
+const changetoxiakucao = () => {
+    plantname.value = '夏枯草'
 }
 </script>
 
@@ -93,12 +110,45 @@ const closeModal = () => {
 
 .medicine {
     height: 54.8vh;
-
+    position: relative;
 }
 
 .medicine_picture {
     max-height: 100%;
     max-width: 100%;
+
+}
+
+.夏枯草 {
+    max-height: 90%;
+    top: -3.5vh;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    position: absolute;
+}
+
+.枸杞 {
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.百合 {
+    max-height: 100%;
+    top: -1.5vh;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    position: absolute;
+}
+
+.酸枣仁 {
+    max-height: 100%;
+    top: -1.8vh;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    position: absolute;
 }
 
 .bottomofpage {
