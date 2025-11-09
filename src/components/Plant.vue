@@ -8,8 +8,7 @@
             </div>
         </div>
         <div class="medicine">
-            <img :src="`../../public/source/plants/${plantname}.png`" alt="" class="medicine_picture"
-                :class="plantname">
+            <img :src="`./source/plants/${plantname}.png`" alt="" class="medicine_picture" :class="plantname">
         </div>
         <div class="bottomofpage">
             <img src="../../public/source/告示牌.png" alt="" class="board">
