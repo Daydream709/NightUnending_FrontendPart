@@ -29,14 +29,23 @@
                 <img src="../../public/source/柜子.png" class="cabinet-image" alt="柜子">
 
                 <!-- 在图片上定位其他元素 -->
-                <img src="../../public/source/plants/夏枯草种子.png" class="fixed-item item-1" alt="夏枯草"
-                    @click="changetoxiakucao">
-                <img src="../../public/source/plants/枸杞种子.png" class="fixed-item item-2" alt="枸杞"
-                    @click="changetogouqi">
-                <img src="../../public/source/plants/百合种子.png" class="fixed-item item-3" alt="百合"
-                    @click="changetobaihe">
-                <img src="../../public/source/plants/酸枣仁种子.png" class="fixed-item item-4" alt="酸枣仁"
-                    @click="changetosuanzaoren">
+                <div @click="changetoxiakucao"><img src="../../public/source/plants/夏枯草种子.png" class="fixed-item item-1"
+                        alt="夏枯草">
+                    <div class="plant_name_tag name1">夏枯草</div>
+                </div>
+                <div @click="changetogouqi"><img src="../../public/source/plants/枸杞种子.png" class="fixed-item item-2"
+                        alt="枸杞">
+                    <div class="plant_name_tag name2">枸杞</div>
+                </div>
+                <div @click="changetobaihe"><img src="../../public/source/plants/百合种子.png" class="fixed-item item-3"
+                        alt="百合">
+                    <div class="plant_name_tag name3">百合</div>
+                </div>
+                <div @click="changetosuanzaoren"><img src="../../public/source/plants/酸枣仁种子.png"
+                        class="fixed-item item-4" alt="酸枣仁">
+                    <div class="plant_name_tag name4">酸枣仁</div>
+                </div>
+
 
                 <button @click="closeModal" class="close-button">关闭</button>
             </div>
@@ -98,7 +107,7 @@ const changetoxiakucao = () => {
 
 .storage {
     float: right;
-    margin-top: 4vh;
+    margin-top: 3.7vh;
     margin-right: 5.6vw;
     font-size: 3.4vw;
 }
@@ -280,6 +289,38 @@ const changetoxiakucao = () => {
 
 .close-button:hover {
     background-color: #45a049;
+}
+
+.plant_name_tag {
+    position: absolute;
+    display: inline-block;
+    padding: 4px 8px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 2vw;
+    color: white;
+    font-size: 3vw;
+    /* 响应式字体大小 */
+    z-index: 3;
+}
+
+.name1 {
+    top: 27%;
+    left: 29%;
+}
+
+.name2 {
+    top: 27%;
+    right: 26%;
+}
+
+.name3 {
+    top: 41%;
+    left: 31%;
+}
+
+.name4 {
+    top: 41%;
+    right: 24%;
 }
 </style>
 // 812
