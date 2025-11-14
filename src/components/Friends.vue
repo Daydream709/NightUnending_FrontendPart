@@ -9,23 +9,38 @@
             </div>
             <div class="topthree">
                 <div class="topthree-item1">
-                    <div class="circle"></div>
-                    <div class="base"></div>
+                    <img src="../../public/source/crown/金皇冠.png" alt="" class="goldcrown">
+                    <img :src="getRandomAvatar(1)" alt="" class="circle">
+                    <div class="base">用户1</div>
                 </div>
                 <div class="topthree-item2">
-                    <div class="circle"></div>
-                    <div class="base"></div>
+                    <img src="../../public/source/crown/银皇冠.png" alt="" class="silvercrown">
+                    <img :src="getRandomAvatar(2)" alt="" class="circle">
+                    <div class="base">用户2</div>
                 </div>
                 <div class="topthree-item3">
-                    <div class="circle"></div>
-                    <div class="base"></div>
+                    <img src="../../public/source/crown/铜皇冠.png" alt="" class="coppercrown">
+                    <img :src="getRandomAvatar(3)" alt="" class="circle">
+                    <div class="base">用户3</div>
                 </div>
             </div>
         </div>
         <div class="scrollpart" ref="scrollContainer">
             <div class="content">
                 <!-- 这里放置你的滚动内容 -->
-                <div class="item" v-for="i in 15" :key="i"></div>
+                <div class="item" v-for="i in 9" :key="i">
+                    <div class="item-content">
+                        <div class="item-number">{{ i }}</div>
+                        <img :src="getRandomAvatar(i)" alt="" class="item-profilepicture">
+                        <div class="item-information">
+                            <div class="item-username">用户{{ i }}</div>
+                            <div class="item-details">
+                                <div class="item-power">能量: {{ 95 - 5 * i }}</div>
+                                <div class="item-plantnumber">药草数量: {{ Math.floor((10 - i) / 3) }}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -33,6 +48,40 @@
 
 <script setup>
 import { ref, onMounted, onUnmounted, onActivated } from 'vue'
+
+// 导入头像图片资源
+import avatar1 from '../../public/source/profilepictures/nightunending.png'
+import avatar2 from '../../public/source/profilepictures/夏枯草.jpg'
+import avatar3 from '../../public/source/profilepictures/枸杞.jpg'
+import avatar4 from '../../public/source/profilepictures/百合.jpg'
+import avatar5 from '../../public/source/profilepictures/酸枣仁.jpg'
+
+
+// 头像数组
+const avatarImages = [
+    avatar1,
+    avatar2,
+    avatar3,
+    avatar4,
+    avatar5
+]
+
+// 存储每个项目的头像索引
+const itemAvatars = ref({})
+
+// 获取随机头像的函数
+const getRandomAvatar = (index) => {
+    // 如果该项目还没有分配头像，则分配一个随机头像
+    if (!(index in itemAvatars.value)) {
+        const randomIndex = Math.floor(Math.random() * avatarImages.length)
+        itemAvatars.value[index] = avatarImages[randomIndex]
+    }
+
+    return itemAvatars.value[index]
+}
+
+
+
 
 const scrollContainer = ref(null)
 const topOpacity = ref(1)
@@ -94,7 +143,7 @@ onActivated(() => {
     font-size: 6.4vw;
     color: #000;
     text-align: center;
-    padding-top: 7vh;
+    padding-top: 5.5vh;
 }
 
 .choice {
@@ -103,7 +152,7 @@ onActivated(() => {
     background-color: #D1DBC7;
     margin: 0 auto;
     margin-top: 2vh;
-    margin-bottom: 3vh;
+    margin-bottom: 5vh;
     border-radius: 3.2vh;
     display: flex;
     overflow: hidden;
@@ -150,11 +199,28 @@ onActivated(() => {
     left: 37.9vw;
 }
 
+.goldcrown {
+    position: absolute;
+    z-index: 2;
+    width: 60%;
+    left: 20%;
+    top: -26%;
+}
+
 .topthree-item2 {
     position: absolute;
     top: 6vh;
     left: 67.8vw;
 
+}
+
+.silvercrown {
+    position: absolute;
+    z-index: 2;
+    width: 45%;
+    left: 52%;
+    top: -17%;
+    transform: rotate(30deg);
 }
 
 .topthree-item3 {
@@ -163,13 +229,26 @@ onActivated(() => {
     left: 8vw;
 }
 
+.coppercrown {
+    position: absolute;
+    z-index: 2;
+    width: 45%;
+    top: -17%;
+    transform: rotate(-30deg);
+}
+
 .circle {
     width: 24.2vw;
     height: 24.2vw;
-    background-color: #D9D9D9;
+    background-size: cover;
+    /* 调整图片大小以覆盖整个区域 */
+    background-position: center;
+    /* 将图片居中显示 */
+    background-repeat: no-repeat;
+    /* 防止图片重复 */
     border-radius: 50%;
     position: relative;
-    z-index: 1;
+    z-index: 0;
 }
 
 .base {
@@ -179,7 +258,12 @@ onActivated(() => {
     position: relative;
     border-radius: 1.725vh;
     transform: translateY(-1vh);
-    z-index: 0;
+    z-index: 1;
+    color: white;
+    font-size: 3.4vw;
+    text-align: center;
+    line-height: 3.45vh;
+    /* 与height相同 */
 }
 
 .scrollpart {
@@ -220,5 +304,52 @@ onActivated(() => {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.item-content {
+    color: #2B2B2B;
+    display: flex;
+    /* 添加flex布局 */
+    align-items: center;
+    /* 垂直居中 */
+    width: 100%;
+    padding: 0 8vw;
+    /* 添加一些内边距使内容不贴边 */
+}
+
+.item-number {
+    display: inline-block;
+    font-size: 6.4vw;
+    margin-right: 3vw;
+
+}
+
+.item-profilepicture {
+    display: inline-block;
+    width: 12vw;
+    height: 12vw;
+    border-radius: 6vw;
+    margin-right: 3vw;
+}
+
+.item-information {
+    display: inline-block;
+    line-height: 1.3;
+}
+
+.item-username {
+    color: #2B2B2B;
+    font-size: 3.5vw;
+}
+
+.item-power,
+.item-plantnumber {
+    display: inline-block;
+    font-size: 3.5vw;
+    color: #AAAAAA;
+}
+
+.item-power {
+    padding-right: 8vw;
 }
 </style>

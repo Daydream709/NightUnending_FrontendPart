@@ -1,7 +1,9 @@
 <template>
     <div class="page">
         <div class="topofpage">
-            <div class="power">能量</div>
+            <div class="power"><img src="../../public/source/泡泡.png" alt="" class="bubble">
+                <div class="power_number">{{ powernumber }}</div>
+            </div>
             <div class="storage" @click="openModal">
                 <img class="storage_picture" src="../../public/source/药草库.png" alt="">
                 <div class="storage_words">药草库</div>
@@ -59,6 +61,7 @@ import { ref } from 'vue'
 // 控制模态框显示状态
 const showModal = ref(false)
 const plantname = ref('枸杞')
+const powernumber = ref(70)
 // 打开模态框的方法
 const openModal = () => {
     showModal.value = true
@@ -99,10 +102,26 @@ const changetoxiakucao = () => {
 
 .power {
     float: left;
-    color: #FFC169;
+    color: #FFFFFF;
     font-size: 3.94vh;
-    margin-top: 5.5vh;
+    margin-top: 4vh;
     margin-left: 5.3vw;
+    position: relative;
+}
+
+.bubble {
+    width: 10.7vh;
+}
+
+.power_number {
+    position: absolute;
+    /* 绝对定位 */
+    top: 45%;
+    /* 垂直居中 */
+    left: 52%;
+    /* 水平居中 */
+    transform: translate(-50%, -50%);
+
 }
 
 .storage {
@@ -171,6 +190,7 @@ const changetoxiakucao = () => {
 }
 
 .board_words {
+    color: #2B2B2B;
     text-align: left;
     position: absolute;
     top: 4.6vh;

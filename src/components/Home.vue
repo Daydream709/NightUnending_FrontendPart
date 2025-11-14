@@ -53,11 +53,11 @@ const sleepData = ref({
     score: 0,
     advice: '暂无建议'
 })
-const dailyenergy = ref(666)
+const dailyenergy = ref(30)
 
-const cumulativeenergy = ref(114514)
+const cumulativeenergy = ref(5604)
 
-const username = ref('XXX')
+const username = ref('睡大觉')
 // 定义时间响应式变量
 const time = ref('')
 

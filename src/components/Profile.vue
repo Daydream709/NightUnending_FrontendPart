@@ -4,10 +4,10 @@
             <div class="avatar"></div>
             <div class="nameiconid">
                 <div class="nameicon">
-                    <div class="name">XXX</div>
+                    <div class="name">睡大觉</div>
                     <div class="icon"><img class="down" src="../../public/source/icon/sleepsituation.png" alt=""></div>
                 </div>
-                <div class="id">id : 111111111</div>
+                <div class="id">id : 1235481263</div>
             </div>
         </div>
         <div class="options">
