@@ -1,3 +1,44 @@
+<template>
+  <div class="app-container">
+    <div class="content">
+      <keep-alive>
+        <component :is="components[activeTab]">
+        </component>
+      </keep-alive>
+    </div>
+    <div class="tab-bar">
+      <div class="tab-item" :class="{ active: activeTab === 'home' }" @click="activeTab = 'home'">
+        <!-- 修改: 动态绑定首页图标 -->
+        <img class="tab-icon"
+          :src="activeTab === 'home' ? '../public/source/icon/homeactive.png' : '../public/source/icon/home.png'"
+          alt="">
+        <span>首页</span>
+      </div>
+      <div class="tab-item" :class="{ active: activeTab === 'plant' }" @click="activeTab = 'plant'">
+        <!-- 修改: 动态绑定种植图标 -->
+        <img class="tab-icon"
+          :src="activeTab === 'plant' ? '../public/source/icon/plantactive.png' : '../public/source/icon/plant.png'"
+          alt="">
+        <span>种植</span>
+      </div>
+      <div class="tab-item" :class="{ active: activeTab === 'friends' }" @click="activeTab = 'friends'">
+        <!-- 修改: 动态绑定好友图标 -->
+        <img class="tab-icon"
+          :src="activeTab === 'friends' ? '../public/source/icon/friendsactive.png' : '../public/source/icon/friends.png'"
+          alt="">
+        <span>好友</span>
+      </div>
+      <div class="tab-item" :class="{ active: activeTab === 'profile' }" @click="activeTab = 'profile'">
+        <!-- 修改: 动态绑定我的图标 -->
+        <img class="tab-icon"
+          :src="activeTab === 'profile' ? '../public/source/icon/profileactive.png' : '../public/source/icon/profile.png'"
+          alt="">
+        <span>我的</span>
+      </div>
+    </div>
+  </div>
+</template>
+
 <script setup>
 import { ref } from 'vue'
 import Home from './components/Home.vue'
@@ -12,35 +53,9 @@ const components = {
   friends: Friends,
   profile: Profile
 }
-</script>
 
-<template>
-  <div class="app-container">
-    <div class="content">
-      <keep-alive>
-        <component :is="components[activeTab]"></component>
-      </keep-alive>
-    </div>
-    <div class="tab-bar">
-      <div class="tab-item" :class="{ active: activeTab === 'home' }" @click="activeTab = 'home'">
-        <img class="tab-icon" src="../public/source/icon/home.png" alt="">
-        <span>首页</span>
-      </div>
-      <div class="tab-item" :class="{ active: activeTab === 'plant' }" @click="activeTab = 'plant'">
-        <img class="tab-icon" src="../public/source/icon/plant.png" alt=""></img>
-        <span>种植</span>
-      </div>
-      <div class="tab-item" :class="{ active: activeTab === 'friends' }" @click="activeTab = 'friends'">
-        <img class="tab-icon" src="../public/source/icon/friends.png" alt=""></img>
-        <span>好友</span>
-      </div>
-      <div class="tab-item" :class="{ active: activeTab === 'profile' }" @click="activeTab = 'profile'">
-        <img class="tab-icon" src="../public/source/icon/profile.png" alt=""></img>
-        <span>我的</span>
-      </div>
-    </div>
-  </div>
-</template>
+
+</script>
 
 <style scoped>
 .app-container {
@@ -78,15 +93,14 @@ const components = {
   font-weight: 400;
   color: #AAAAAA;
   cursor: pointer;
-  opacity: 0.4;
 }
 
 .tab-icon {
-  width: 12vw;
+  width: 8vw;
 }
 
 .tab-item.active {
-  color: #000000;
+  color: #436850;
   font-weight: bold;
   opacity: 1;
 }

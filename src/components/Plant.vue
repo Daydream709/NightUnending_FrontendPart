@@ -49,7 +49,7 @@
                 </div>
 
 
-                <button @click="closeModal" class="close-button">关闭</button>
+                <img src="../../public/source/icon/关闭.png" @click="closeModal" class="close-button" />
             </div>
         </div>
     </div>
@@ -294,10 +294,10 @@ const changetoxiakucao = () => {
 
 .close-button {
     position: absolute;
+    width: 14vw;
     top: 2%;
-    left: 3%;
+    left: 80%;
     padding: 8px 16px;
-    background-color: #4CAF50;
     color: white;
     border: none;
     border-radius: 4px;
@@ -307,9 +307,6 @@ const changetoxiakucao = () => {
     /* 响应式字体大小 */
 }
 
-.close-button:hover {
-    background-color: #45a049;
-}
 
 .plant_name_tag {
     position: absolute;

@@ -1,7 +1,9 @@
 <template>
     <div class="page">
         <div class="maininfo">
-            <div class="avatar"></div>
+            <img :src="useravatar" class="avatar">
+            <div class="changeavatar" @click="showModal = true">更换头像</div></img>
+
             <div class="nameiconid">
                 <div class="nameicon">
                     <div class="name">睡大觉</div>
@@ -11,18 +13,19 @@
             </div>
         </div>
         <div class="options">
-            <div class="sleepsituation">
-                <img class="opticon" src="../../public/source/icon/sleepsituation.png" alt="">
-                <span class="content">睡眠情况</span>
+            <!-- 修改: 添加点击事件打开全屏模态框 -->
+            <div class="personalinfo" @click="showPersonalInfoModal = true">
+                <img class="opticon" src="../../public/source/icon/personalinfo.png" alt="">
+                <span class="content">个人信息</span>
                 <span class="arrowhead">></span>
             </div>
-            <div class="healthanalytics">
-                <img class="opticon" src="../../public/source/icon/healthanalytics.png" alt="">
-                <span class="content">健康分析</span>
+            <div class="sleepanalytics">
+                <img class="opticon" src="../../public/source/icon/sleepanalytics.png" alt="">
+                <span class="content">睡眠情况与分析</span>
                 <span class="arrowhead">></span>
             </div>
             <div class="accomplishment">
-                <img class="opticon" src="../../public/source/icon/sleepsituation.png" alt="">
+                <img class="opticon" src="../../public/source/icon/accomplishment.png" alt="">
                 <span class="content">成就</span>
                 <span class="arrowhead">></span>
             </div>
@@ -32,10 +35,88 @@
                 <span class="arrowhead">></span>
             </div>
         </div>
+
+        <!-- 原有的头像更换模态框 -->
+        <div v-if="showModal" class="modal-overlay" @click="showModal = false">
+            <div class="modal-content" @click.stop>
+                <div class="modal-header">
+                    <span class="close-button" @click="showModal = false">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <div class="avatarplus modal-body-avatar">+</div>
+                    <img :src="avatar1" alt="" class="avatarp1 modal-body-avatar" @click="changetoavatar1">
+                    <img :src="avatar2" alt="" class="avatarp2 modal-body-avatar" @click="changetoavatar2">
+                    <img :src="avatar3" alt="" class="avatarp3 modal-body-avatar" @click="changetoavatar3">
+                    <img :src="avatar4" alt="" class="avatarp4 modal-body-avatar" @click="changetoavatar4">
+                    <img :src="avatar0" alt="" class="avatarp0 modal-body-avatar" @click="changetoavatar0">
+                </div>
+            </div>
+        </div>
+
+        <!-- 新增: 全屏个人信息模态框 -->
+        <div v-if="showPersonalInfoModal" class="fullscreen-modal">
+            <div class="modal-header">
+                <span class="close-button-2" @click="showPersonalInfoModal = false">&times;</span>
+                <h2 class="modal-title">个人信息</h2>
+            </div>
+            <div class="personal-info-content">
+                <!-- 在这里添加个人信息内容 -->
+                <div class="info-item">
+                    <span class="info-label">昵称:</span>
+                    <span class="info-value">睡大觉</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">ID:</span>
+                    <span class="info-value">1235481263</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">注册时间:</span>
+                    <span class="info-value">2023-01-01</span>
+                </div>
+                <!-- 可以继续添加更多个人信息项 -->
+            </div>
+        </div>
     </div>
 </template>
 
 <script setup>
+import { ref } from 'vue'
+// 导入头像图片资源
+import avatar0 from '../../public/source/profilepictures/nightunending.png'
+import avatar1 from '../../public/source/profilepictures/夏枯草.jpg'
+import avatar2 from '../../public/source/profilepictures/枸杞.jpg'
+import avatar3 from '../../public/source/profilepictures/百合.jpg'
+import avatar4 from '../../public/source/profilepictures/酸枣仁.jpg'
+
+// 头像数组
+const avatarImages = [
+    avatar0,
+    avatar1,
+    avatar2,
+    avatar3,
+    avatar4
+]
+
+const useravatar = ref(avatarImages[0])
+const changetoavatar0 = () => {
+    useravatar.value = avatarImages[0]
+}
+const changetoavatar1 = () => {
+    useravatar.value = avatarImages[1]
+}
+const changetoavatar2 = () => {
+    useravatar.value = avatarImages[2]
+}
+const changetoavatar3 = () => {
+    useravatar.value = avatarImages[3]
+}
+const changetoavatar4 = () => {
+    useravatar.value = avatarImages[4]
+}
+
+// 控制模态框显示状态
+const showModal = ref(false)
+const showPersonalInfoModal = ref(false) // 新增: 控制个人信息模态框
 </script>
 
 <style scoped>
@@ -50,10 +131,9 @@
 }
 
 .avatar {
-    width: 24.26vw;
-    height: 24.26vw;
+    width: 22vw;
+    height: 22vw;
     border-radius: 12.13vw;
-    background-color: #D9D9D9;
     position: absolute;
     top: 9.6vh;
     left: 7.2vw;
@@ -69,6 +149,20 @@
     color: #000;
 }
 
+.changeavatar {
+    position: absolute;
+    background-color: #D9D9D9;
+    width: 12.267vw;
+    height: 2vh;
+    border-radius: 1vh;
+    text-align: center;
+    font-size: 2.13vw;
+    color: #fff;
+    line-height: 2vh;
+    top: calc(9.6vh + 22vw + 1vh);
+    left: calc(7.2vw + 11vw - 6.1335vw);
+}
+
 .name {
     display: inline-block;
     font-size: 6.4vw;
@@ -82,10 +176,8 @@
     font-size: 3.2vw;
 }
 
-
-
-.sleepsituation,
-.healthanalytics,
+.personalinfo,
+.sleepanalytics,
 .accomplishment,
 .settings {
     height: 5.54vh;
@@ -94,14 +186,13 @@
     line-height: 5.54vh;
     font-size: 4vw;
     color: #436850;
-
 }
 
-.sleepsituation {
+.personalinfo {
     margin-bottom: 0.4vh;
 }
 
-.healthanalytics,
+.sleepanalytics,
 .accomplishment {
     margin-bottom: 3.5vh;
 }
@@ -124,5 +215,159 @@
     width: 6vw;
     height: auto;
     vertical-align: sub;
+}
+
+/* 原有的模态框样式保持不变 */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.modal-content {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 53vh;
+    background-color: white;
+    z-index: 1001;
+}
+
+.modal-header {
+    position: relative;
+    padding: 10px;
+    text-align: left;
+}
+
+.close-button {
+    position: absolute;
+    top: 6vh;
+    left: 6vw;
+    font-size: 10vw;
+    font-weight: 100;
+    color: black;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1003;
+}
+
+.modal-body {
+    text-align: center;
+    position: relative;
+}
+
+.modal-body-avatar {
+    width: 22vw;
+    height: 22vw;
+    border-radius: 50%;
+    position: absolute;
+    display: block;
+}
+
+.avatarplus {
+    background-color: #D9D9D9;
+    top: 12vh;
+    left: 7.2vw;
+    font-size: 15vw;
+    color: #2B2B2B;
+    /* 使用行高方法实现居中 */
+    line-height: 22vw;
+    /* 与容器高度相同 */
+    text-align: center;
+    /* 水平居中 */
+}
+
+.avatarp1 {
+    top: 12vh;
+    left: 37.8vw;
+}
+
+.avatarp2 {
+    top: 12vh;
+    left: 66.93vw
+}
+
+.avatarp3 {
+    top: 28vh;
+    left: 7.2vw;
+}
+
+.avatarp4 {
+    top: 28vh;
+    left: 37.8vw;
+}
+
+.avatarp0 {
+    top: 28vh;
+    left: 66.93vw;
+}
+
+/* 新增: 全屏模态框样式 */
+.fullscreen-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #FFF6E9;
+    /* 不透明的白色背景 */
+    z-index: 1002;
+    overflow-y: auto;
+}
+
+.close-button-2 {
+    position: absolute;
+    top: 9.2vh;
+    left: 7.5vw;
+    font-size: 10vw;
+    font-weight: 100;
+    color: black;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1003;
+}
+
+.modal-title {
+    text-align: center;
+    margin-top: 7.4vh;
+    font-size: 5.4vw;
+    color: #2B2B2B;
+}
+
+.personal-info-content {
+    background-image: url(../../public/source/个人信息背景.png);
+    padding: 20px;
+    width: 93vw;
+    height: 64.4vh;
+    margin-top: 8vh;
+}
+
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.info-label {
+    font-weight: bold;
+    color: #436850;
+}
+
+.info-value {
+    color: #666;
 }
 </style>
