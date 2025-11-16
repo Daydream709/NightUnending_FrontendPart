@@ -10,18 +10,18 @@
             <div class="topthree">
                 <div class="topthree-item1">
                     <img src="../../public/source/crown/金皇冠.png" alt="" class="goldcrown">
-                    <img :src="getRandomAvatar(1)" alt="" class="circle">
-                    <div class="base">用户1</div>
+                    <img :src="testfriendsinfo[1].useravatar" alt="" class="circle">
+                    <div class="base">{{ testfriendsinfo[1].username }}</div>
                 </div>
                 <div class="topthree-item2">
                     <img src="../../public/source/crown/银皇冠.png" alt="" class="silvercrown">
-                    <img :src="getRandomAvatar(2)" alt="" class="circle">
-                    <div class="base">用户2</div>
+                    <img :src="testfriendsinfo[2].useravatar" alt="" class="circle">
+                    <div class="base">{{ testfriendsinfo[2].username }}</div>
                 </div>
                 <div class="topthree-item3">
                     <img src="../../public/source/crown/铜皇冠.png" alt="" class="coppercrown">
-                    <img :src="getRandomAvatar(3)" alt="" class="circle">
-                    <div class="base">用户3</div>
+                    <img :src="testfriendsinfo[3].useravatar" alt="" class="circle">
+                    <div class="base">{{ testfriendsinfo[3].username }}</div>
                 </div>
             </div>
         </div>
@@ -31,12 +31,12 @@
                 <div class="item" v-for="i in 9" :key="i">
                     <div class="item-content">
                         <div class="item-number">{{ i }}</div>
-                        <img :src="getRandomAvatar(i)" alt="" class="item-profilepicture">
+                        <img :src="testfriendsinfo[i].useravatar" alt="" class="item-profilepicture">
                         <div class="item-information">
-                            <div class="item-username">用户{{ i }}</div>
+                            <div class="item-username">{{ testfriendsinfo[i].username }}</div>
                             <div class="item-details">
-                                <div class="item-power">能量: {{ 95 - 5 * i }}</div>
-                                <div class="item-plantnumber">药草数量: {{ Math.floor((10 - i) / 3) }}</div>
+                                <div class="item-power">能量: {{ testfriendsinfo[i].power }}</div>
+                                <div class="item-plantnumber">药草数量: {{ testfriendsinfo[i].plantnumber }}</div>
                             </div>
                         </div>
                     </div>
@@ -66,20 +66,62 @@ const avatarImages = [
     avatar5
 ]
 
-// 存储每个项目的头像索引
-const itemAvatars = ref({})
-
-// 获取随机头像的函数
-const getRandomAvatar = (index) => {
-    // 如果该项目还没有分配头像，则分配一个随机头像
-    if (!(index in itemAvatars.value)) {
-        const randomIndex = Math.floor(Math.random() * avatarImages.length)
-        itemAvatars.value[index] = avatarImages[randomIndex]
+const testfriendsinfo = {
+    "1": {
+        "username": "烟雨任平生",
+        "useravatar": avatar1,
+        "power": 95,
+        "plantnumber": 4
+    },
+    "2": {
+        "username": "像素世界",
+        "useravatar": avatar5,
+        "power": 92,
+        "plantnumber": 4
+    },
+    "3": {
+        "username": "奶油泡芙",
+        "useravatar": avatar3,
+        "power": 80,
+        "plantnumber": 4
+    },
+    "4": {
+        "username": "调色盘失窃",
+        "useravatar": avatar1,
+        "power": 77,
+        "plantnumber": 3
+    },
+    "5": {
+        "username": "云卷云舒",
+        "useravatar": avatar5,
+        "power": 71,
+        "plantnumber": 3
+    },
+    "6": {
+        "username": "碳基代码体",
+        "useravatar": avatar4,
+        "power": 70,
+        "plantnumber": 3
+    },
+    "7": {
+        "username": "平行宇宙快递员",
+        "useravatar": avatar5,
+        "power": 65,
+        "plantnumber": 2
+    },
+    "8": {
+        "username": "神经云备份员",
+        "useravatar": avatar3,
+        "power": 62,
+        "plantnumber": 1
+    },
+    "9": {
+        "username": "候鸟",
+        "useravatar": avatar2,
+        "power": 46,
+        "plantnumber": 0
     }
-
-    return itemAvatars.value[index]
 }
-
 
 
 

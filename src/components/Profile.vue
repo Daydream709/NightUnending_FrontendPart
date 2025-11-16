@@ -7,7 +7,7 @@
             <div class="nameiconid">
                 <div class="nameicon">
                     <div class="name">睡大觉</div>
-                    <div class="icon"><img class="down" src="../../public/source/icon/sleepsituation.png" alt=""></div>
+                    <!-- <div class="icon"><img class="down" src="../../public/source/icon/sleepsituation.png" alt=""></div> -->
                 </div>
                 <div class="id">id : 1235481263</div>
             </div>
@@ -60,20 +60,19 @@
                 <h2 class="modal-title">个人信息</h2>
             </div>
             <div class="personal-info-content">
-                <!-- 在这里添加个人信息内容 -->
-                <div class="info-item">
-                    <span class="info-label">昵称:</span>
-                    <span class="info-value">睡大觉</span>
+                <div class="toppart">
+                    <img :src="useravatar" alt="" class="toppart-avatar">
+                    <div class="toppart-info">
+                        <div class="toppart-info-username">用户名：睡大觉</div>
+                        <div class="toppart-info-id">id：1235481263</div>
+                        <div class="toppart-info-email">注册邮箱：<br> 1235481263@qq.com</div>
+                    </div>
                 </div>
-                <div class="info-item">
-                    <span class="info-label">ID:</span>
-                    <span class="info-value">1235481263</span>
+                <div class="bottompart">
+                    <div class="bottompart-gender">性别：男</div>
+                    <div class="bottompart-age">年龄段：18-20岁</div>
+                    <div class="bottompart-area">地区：东京都丰岛区千早町</div>
                 </div>
-                <div class="info-item">
-                    <span class="info-label">注册时间:</span>
-                    <span class="info-value">2023-01-01</span>
-                </div>
-                <!-- 可以继续添加更多个人信息项 -->
             </div>
         </div>
     </div>
@@ -349,25 +348,50 @@ const showPersonalInfoModal = ref(false) // 新增: 控制个人信息模态框
 
 .personal-info-content {
     background-image: url(../../public/source/个人信息背景.png);
-    padding: 20px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 1vh 2vw;
     width: 93vw;
     height: 64.4vh;
-    margin-top: 8vh;
+    margin: 6vh auto 0 auto;
+    /* 上边距8vh，左右自动居中 */
+    color: #2B2B2B;
+    font-size: 4.27vw;
+    text-align: left;
 }
 
-.info-item {
-    display: flex;
-    justify-content: space-between;
-    padding: 15px 0;
-    border-bottom: 1px solid #eee;
+.toppart {
+    /* background-color: yellow; */
+    margin-top: 5.5vh;
 }
 
-.info-label {
-    font-weight: bold;
-    color: #436850;
+.toppart-avatar {
+    display: inline-block;
+    width: 22vw;
+    height: 22vw;
+    border-radius: 50%;
+    margin-left: 6vw;
 }
 
-.info-value {
-    color: #666;
+.toppart-info {
+    display: inline-block;
+    margin-left: 7.5vw;
+    line-height: 1.8;
+}
+
+.toppart-info-email {
+    line-height: 1.3;
+}
+
+.bottompart {
+    /* background-color: red; */
+    margin-top: 5vh;
+    padding-left: 7.5vw;
+}
+
+.bottompart-age,
+.bottompart-area {
+    margin-top: 2.4vh;
 }
 </style>

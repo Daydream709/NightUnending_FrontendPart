@@ -1,7 +1,7 @@
 <template>
     <div class="page">
         <div class="top">
-            <span class="title">夜未央</span>
+            <img src="../../public/source/greenlogo.png" alt="" class="title">
         </div>
         <div class="morning">
             <span class="nowtime">现在是{{ time }}</span>
@@ -198,16 +198,16 @@ onActivated(() => {
 
 .top {
     height: 15vh;
+    position: relative;
     /* background-color: pink; */
 }
 
 .title {
-    font-size: 6.4vw;
-    color: #12372A;
-    float: left;
-    padding-top: 8.62vh;
-    padding-left: 7.2vw;
-    font-weight: 400;
+    display: block;
+    width: 20vw;
+    position: absolute;
+    top: 6vh;
+    left: 3.2vw;
 }
 
 
