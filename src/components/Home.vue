@@ -17,7 +17,7 @@
                     <div class="sleeptime">{{ ((sleepData.duration).replace('小', '')).replace('钟', '') }}</div>
                 </div>
                 <div class="p1icon">
-                    <img class="more" src="../../public/source/icon/more.png" alt="">
+                    <img class="more" src="../../public/source/more.png" alt="">
                 </div>
             </div>
 
