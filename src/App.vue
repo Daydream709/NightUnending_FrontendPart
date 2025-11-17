@@ -10,28 +10,28 @@
       <div class="tab-item" :class="{ active: activeTab === 'home' }" @click="activeTab = 'home'">
         <!-- 修改: 动态绑定首页图标 -->
         <img class="tab-icon"
-          :src="activeTab === 'home' ? '../public/source/icon/homeactive.png' : '../public/source/icon/home.png'"
+          :src="activeTab === 'home' ? './source/icon/homeactive.png' : './source/icon/home.png'"
           alt="">
         <span>首页</span>
       </div>
       <div class="tab-item" :class="{ active: activeTab === 'plant' }" @click="activeTab = 'plant'">
         <!-- 修改: 动态绑定种植图标 -->
         <img class="tab-icon"
-          :src="activeTab === 'plant' ? '../public/source/icon/plantactive.png' : '../public/source/icon/plant.png'"
+          :src="activeTab === 'plant' ? './source/icon/plantactive.png' : './source/icon/plant.png'"
           alt="">
         <span>种植</span>
       </div>
       <div class="tab-item" :class="{ active: activeTab === 'friends' }" @click="activeTab = 'friends'">
         <!-- 修改: 动态绑定好友图标 -->
         <img class="tab-icon"
-          :src="activeTab === 'friends' ? '../public/source/icon/friendsactive.png' : '../public/source/icon/friends.png'"
+          :src="activeTab === 'friends' ? './source/icon/friendsactive.png' : './source/icon/friends.png'"
           alt="">
         <span>好友</span>
       </div>
       <div class="tab-item" :class="{ active: activeTab === 'profile' }" @click="activeTab = 'profile'">
         <!-- 修改: 动态绑定我的图标 -->
         <img class="tab-icon"
-          :src="activeTab === 'profile' ? '../public/source/icon/profileactive.png' : '../public/source/icon/profile.png'"
+          :src="activeTab === 'profile' ? './source/icon/profileactive.png' : './source/icon/profile.png'"
           alt="">
         <span>我的</span>
       </div>
