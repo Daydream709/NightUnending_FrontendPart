@@ -43,7 +43,7 @@
                     <span class="close-button" @click="showModal = false">&times;</span>
                 </div>
                 <div class="modal-body">
-                    <div class="avatarplus modal-body-avatar">+</div>
+                    <img src="../../public/source/profilepictures/avatarplus.webp" alt="" class="avatarplus modal-body-avatar" >
                     <img :src="avatar1" alt="" class="avatarp1 modal-body-avatar" @click="changetoavatar1">
                     <img :src="avatar2" alt="" class="avatarp2 modal-body-avatar" @click="changetoavatar2">
                     <img :src="avatar3" alt="" class="avatarp3 modal-body-avatar" @click="changetoavatar3">
@@ -273,16 +273,8 @@ const showPersonalInfoModal = ref(false) // 新增: 控制个人信息模态框
 }
 
 .avatarplus {
-    background-color: #D9D9D9;
     top: 12vh;
     left: 7.2vw;
-    font-size: 15vw;
-    color: #2B2B2B;
-    /* 使用行高方法实现居中 */
-    line-height: 22vw;
-    /* 与容器高度相同 */
-    text-align: center;
-    /* 水平居中 */
 }
 
 .avatarp1 {
